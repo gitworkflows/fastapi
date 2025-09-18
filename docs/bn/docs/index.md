@@ -5,14 +5,17 @@
     <em>FastAPI উচ্চক্ষমতা সম্পন্ন, সহজে শেখার এবং দ্রুত কোড করে প্রোডাকশনের জন্য ফ্রামওয়ার্ক।</em>
 </p>
 <p align="center">
-<a href="https://github.com/fastapi/fastapi/actions?query=workflow%3ATest" target="_blank">
-    <img src="https://github.com/fastapi/fastapi/workflows/Test/badge.svg" alt="Test">
+<a href="https://github.com/fastapi/fastapi/actions?query=workflow%3ATest+event%3Apush+branch%3Amaster" target="_blank">
+    <img src="https://github.com/fastapi/fastapi/actions/workflows/test.yml/badge.svg?event=push&branch=master" alt="Test">
 </a>
-<a href="https://codecov.io/gh/fastapi/fastapi" target="_blank">
-    <img src="https://img.shields.io/codecov/c/github/fastapi/fastapi?color=%2334D058" alt="Coverage">
+<a href="https://coverage-badge.samuelcolvin.workers.dev/redirect/fastapi/fastapi" target="_blank">
+    <img src="https://coverage-badge.samuelcolvin.workers.dev/fastapi/fastapi.svg" alt="Coverage">
 </a>
 <a href="https://pypi.org/project/fastapi" target="_blank">
     <img src="https://img.shields.io/pypi/v/fastapi?color=%2334D058&label=pypi%20package" alt="Package version">
+</a>
+<a href="https://pypi.org/project/fastapi" target="_blank">
+    <img src="https://img.shields.io/pypi/pyversions/fastapi.svg?color=%2334D058" alt="Supported Python versions">
 </a>
 </p>
 
@@ -79,13 +82,13 @@ FastAPI একটি আধুনিক, দ্রুত ( বেশি ক্�
 
 "_আমি **FastAPI** নিয়ে চাঁদের সমান উৎসাহিত। এটি খুবই মজার!_"
 
-<div style="text-align: right; margin-right: 10%;">ব্রায়ান ওকেন - <strong><a href="https://pythonbytes.fm/episodes/show/123/time-to-right-the-py-wrongs?time_in_sec=855" target="_blank">পাইথন বাইটস</a> পডকাস্ট হোস্ট</strong> <a href="https://twitter.com/brianokken/status/1112220079972728832" target="_blank"><small>(ref)</small></a></div>
+<div style="text-align: right; margin-right: 10%;">ব্রায়ান ওকেন - <strong><a href="https://pythonbytes.fm/episodes/show/123/time-to-right-the-py-wrongs?time_in_sec=855" target="_blank">পাইথন বাইটস</a> পডকাস্ট হোস্ট</strong> <a href="https://x.com/brianokken/status/1112220079972728832" target="_blank"><small>(ref)</small></a></div>
 
 ---
 
 "\_সত্যিই, আপনি যা তৈরি করেছেন তা খুব মজবুত এবং পরিপূর্ন৷ অনেক উপায়ে, আমি যা **Hug** এ করতে চেয়েছিলাম - তা কাউকে তৈরি করতে দেখে আমি সত্যিই অনুপ্রানিত৷\_"
 
-<div style="text-align: right; margin-right: 10%;">টিমোথি ক্রসলে - <strong><a href="https://www.hug.rest/" target="_blank">Hug</a> স্রষ্টা</strong> <a href="https://news.ycombinator.com/item?id=19455465" target="_blank"><small>(ref)</small></a></div>
+<div style="text-align: right; margin-right: 10%;">টিমোথি ক্রসলে - <strong><a href="https://github.com/hugapi/hug" target="_blank">Hug</a> স্রষ্টা</strong> <a href="https://news.ycombinator.com/item?id=19455465" target="_blank"><small>(ref)</small></a></div>
 
 ---
 
@@ -93,7 +96,7 @@ FastAPI একটি আধুনিক, দ্রুত ( বেশি ক্�
 
 "_আমরা আমাদের **APIs** [...] এর জন্য **FastAPI**- তে এসেছি [...] আমি মনে করি আপনিও এটি পছন্দ করবেন [...]_"
 
-<div style="text-align: right; margin-right: 10%;">ইনেস মন্টানি - ম্যাথিউ হোনিবাল - <strong><a href="https://explosion.ai" target="_blank">Explosion AI</a> প্রতিষ্ঠাতা - <a href="https://spacy.io" target="_blank">spaCy</a> স্রষ্টা</strong> <a href="https://twitter.com/_inesmontani/status/1144173225322143744" target="_blank"><small>(ref)</small></a> - <a href="https://twitter.com/honnibal/status/1144031421859655680" target="_blank"><small>(ref)</small></a></div>
+<div style="text-align: right; margin-right: 10%;">ইনেস মন্টানি - ম্যাথিউ হোনিবাল - <strong><a href="https://explosion.ai" target="_blank">Explosion AI</a> প্রতিষ্ঠাতা - <a href="https://spacy.io" target="_blank">spaCy</a> স্রষ্টা</strong> <a href="https://x.com/_inesmontani/status/1144173225322143744" target="_blank"><small>(ref)</small></a> - <a href="https://x.com/honnibal/status/1144031421859655680" target="_blank"><small>(ref)</small></a></div>
 
 ---
 

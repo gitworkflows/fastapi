@@ -1,4 +1,4 @@
-# OAuth2 with Password (and hashing), Bearer with JWT tokens
+# OAuth2 with Password (and hashing), Bearer with JWT tokens { #oauth2-with-password-and-hashing-bearer-with-jwt-tokens }
 
 Now that we have all the security flow, let's make the application actually secure, using <abbr title="JSON Web Tokens">JWT</abbr> tokens and secure password hashing.
 
@@ -6,7 +6,7 @@ This code is something you can actually use in your application, save the passwo
 
 We are going to start from where we left in the previous chapter and increment it.
 
-## About JWT
+## About JWT { #about-jwt }
 
 JWT means "JSON Web Tokens".
 
@@ -26,7 +26,7 @@ After a week, the token will be expired and the user will not be authorized and 
 
 If you want to play with JWT tokens and see how they work, check <a href="https://jwt.io/" class="external-link" target="_blank">https://jwt.io</a>.
 
-## Install `PyJWT`
+## Install `PyJWT` { #install-pyjwt }
 
 We need to install `PyJWT` to generate and verify the JWT tokens in Python.
 
@@ -50,7 +50,7 @@ You can read more about it in the <a href="https://pyjwt.readthedocs.io/en/lates
 
 ///
 
-## Password hashing
+## Password hashing { #password-hashing }
 
 "Hashing" means converting some content (a password in this case) into a sequence of bytes (just a string) that looks like gibberish.
 
@@ -58,13 +58,13 @@ Whenever you pass exactly the same content (exactly the same password) you get e
 
 But you cannot convert from the gibberish back to the password.
 
-### Why use password hashing
+### Why use password hashing { #why-use-password-hashing }
 
 If your database is stolen, the thief won't have your users' plaintext passwords, only the hashes.
 
 So, the thief won't be able to try to use that password in another system (as many users use the same password everywhere, this would be dangerous).
 
-## Install `passlib`
+## Install `passlib` { #install-passlib }
 
 PassLib is a great Python package to handle password hashes.
 
@@ -72,7 +72,7 @@ It supports many secure hashing algorithms and utilities to work with them.
 
 The recommended algorithm is "Bcrypt".
 
-Make sure you create a [virtual environment](../virtual-environments.md){.internal-link target=_blank}, activate it, and then install PassLib with Bcrypt:
+Make sure you create a [virtual environment](../../virtual-environments.md){.internal-link target=_blank}, activate it, and then install PassLib with Bcrypt:
 
 <div class="termy">
 
@@ -94,7 +94,7 @@ And your users would be able to login from your Django app or from your **FastAP
 
 ///
 
-## Hash and verify the passwords
+## Hash and verify the passwords { #hash-and-verify-the-passwords }
 
 Import the tools we need from `passlib`.
 
@@ -116,57 +116,7 @@ And another utility to verify if a received password matches the hash stored.
 
 And another one to authenticate and return a user.
 
-//// tab | Python 3.10+
-
-```Python hl_lines="8  49  56-57  60-61  70-76"
-{!> ../../docs_src/security/tutorial004_an_py310.py!}
-```
-
-////
-
-//// tab | Python 3.9+
-
-```Python hl_lines="8  49  56-57  60-61  70-76"
-{!> ../../docs_src/security/tutorial004_an_py39.py!}
-```
-
-////
-
-//// tab | Python 3.8+
-
-```Python hl_lines="8  50  57-58  61-62  71-77"
-{!> ../../docs_src/security/tutorial004_an.py!}
-```
-
-////
-
-//// tab | Python 3.10+ non-Annotated
-
-/// tip
-
-Prefer to use the `Annotated` version if possible.
-
-///
-
-```Python hl_lines="7  48  55-56  59-60  69-75"
-{!> ../../docs_src/security/tutorial004_py310.py!}
-```
-
-////
-
-//// tab | Python 3.8+ non-Annotated
-
-/// tip
-
-Prefer to use the `Annotated` version if possible.
-
-///
-
-```Python hl_lines="8  49  56-57  60-61  70-76"
-{!> ../../docs_src/security/tutorial004.py!}
-```
-
-////
+{* ../../docs_src/security/tutorial004_an_py310.py hl[8,49,56:57,60:61,70:76] *}
 
 /// note
 
@@ -174,7 +124,7 @@ If you check the new (fake) database `fake_users_db`, you will see how the hashe
 
 ///
 
-## Handle JWT tokens
+## Handle JWT tokens { #handle-jwt-tokens }
 
 Import the modules installed.
 
@@ -202,59 +152,9 @@ Define a Pydantic Model that will be used in the token endpoint for the response
 
 Create a utility function to generate a new access token.
 
-//// tab | Python 3.10+
+{* ../../docs_src/security/tutorial004_an_py310.py hl[4,7,13:15,29:31,79:87] *}
 
-```Python hl_lines="4 7  13-15  29-31  79-87"
-{!> ../../docs_src/security/tutorial004_an_py310.py!}
-```
-
-////
-
-//// tab | Python 3.9+
-
-```Python hl_lines="4 7  13-15  29-31  79-87"
-{!> ../../docs_src/security/tutorial004_an_py39.py!}
-```
-
-////
-
-//// tab | Python 3.8+
-
-```Python hl_lines="4 7  14-16  30-32 80-88"
-{!> ../../docs_src/security/tutorial004_an.py!}
-```
-
-////
-
-//// tab | Python 3.10+ non-Annotated
-
-/// tip
-
-Prefer to use the `Annotated` version if possible.
-
-///
-
-```Python hl_lines="3 6  12-14  28-30  78-86"
-{!> ../../docs_src/security/tutorial004_py310.py!}
-```
-
-////
-
-//// tab | Python 3.8+ non-Annotated
-
-/// tip
-
-Prefer to use the `Annotated` version if possible.
-
-///
-
-```Python hl_lines="4 7  13-15  29-31  79-87"
-{!> ../../docs_src/security/tutorial004.py!}
-```
-
-////
-
-## Update the dependencies
+## Update the dependencies { #update-the-dependencies }
 
 Update `get_current_user` to receive the same token as before, but this time, using JWT tokens.
 
@@ -262,117 +162,17 @@ Decode the received token, verify it, and return the current user.
 
 If the token is invalid, return an HTTP error right away.
 
-//// tab | Python 3.10+
+{* ../../docs_src/security/tutorial004_an_py310.py hl[90:107] *}
 
-```Python hl_lines="90-107"
-{!> ../../docs_src/security/tutorial004_an_py310.py!}
-```
-
-////
-
-//// tab | Python 3.9+
-
-```Python hl_lines="90-107"
-{!> ../../docs_src/security/tutorial004_an_py39.py!}
-```
-
-////
-
-//// tab | Python 3.8+
-
-```Python hl_lines="91-108"
-{!> ../../docs_src/security/tutorial004_an.py!}
-```
-
-////
-
-//// tab | Python 3.10+ non-Annotated
-
-/// tip
-
-Prefer to use the `Annotated` version if possible.
-
-///
-
-```Python hl_lines="89-106"
-{!> ../../docs_src/security/tutorial004_py310.py!}
-```
-
-////
-
-//// tab | Python 3.8+ non-Annotated
-
-/// tip
-
-Prefer to use the `Annotated` version if possible.
-
-///
-
-```Python hl_lines="90-107"
-{!> ../../docs_src/security/tutorial004.py!}
-```
-
-////
-
-## Update the `/token` *path operation*
+## Update the `/token` *path operation* { #update-the-token-path-operation }
 
 Create a `timedelta` with the expiration time of the token.
 
 Create a real JWT access token and return it.
 
-//// tab | Python 3.10+
+{* ../../docs_src/security/tutorial004_an_py310.py hl[118:133] *}
 
-```Python hl_lines="118-133"
-{!> ../../docs_src/security/tutorial004_an_py310.py!}
-```
-
-////
-
-//// tab | Python 3.9+
-
-```Python hl_lines="118-133"
-{!> ../../docs_src/security/tutorial004_an_py39.py!}
-```
-
-////
-
-//// tab | Python 3.8+
-
-```Python hl_lines="119-134"
-{!> ../../docs_src/security/tutorial004_an.py!}
-```
-
-////
-
-//// tab | Python 3.10+ non-Annotated
-
-/// tip
-
-Prefer to use the `Annotated` version if possible.
-
-///
-
-```Python hl_lines="115-130"
-{!> ../../docs_src/security/tutorial004_py310.py!}
-```
-
-////
-
-//// tab | Python 3.8+ non-Annotated
-
-/// tip
-
-Prefer to use the `Annotated` version if possible.
-
-///
-
-```Python hl_lines="116-131"
-{!> ../../docs_src/security/tutorial004.py!}
-```
-
-////
-
-### Technical details about the JWT "subject" `sub`
+### Technical details about the JWT "subject" `sub` { #technical-details-about-the-jwt-subject-sub }
 
 The JWT specification says that there's a key `sub`, with the subject of the token.
 
@@ -394,7 +194,7 @@ So, to avoid ID collisions, when creating the JWT token for the user, you could 
 
 The important thing to keep in mind is that the `sub` key should have a unique identifier across the entire application, and it should be a string.
 
-## Check it
+## Check it { #check-it }
 
 Run the server and go to the docs: <a href="http://127.0.0.1:8000/docs" class="external-link" target="_blank">http://127.0.0.1:8000/docs</a>.
 
@@ -440,7 +240,7 @@ Notice the header `Authorization`, with a value that starts with `Bearer `.
 
 ///
 
-## Advanced usage with `scopes`
+## Advanced usage with `scopes` { #advanced-usage-with-scopes }
 
 OAuth2 has the notion of "scopes".
 
@@ -450,7 +250,7 @@ Then you can give this token to a user directly or a third party, to interact wi
 
 You can learn how to use them and how they are integrated into **FastAPI** later in the **Advanced User Guide**.
 
-## Recap
+## Recap { #recap }
 
 With what you have seen up to now, you can set up a secure **FastAPI** application using standards like OAuth2 and JWT.
 
@@ -470,4 +270,4 @@ But it provides you the tools to simplify the process as much as possible withou
 
 And you can use and implement secure, standard protocols, like OAuth2 in a relatively simple way.
 
-You can learn more in the **Advanced User Guide** about how to use OAuth2 "scopes", for a more fine-grained permission system, following these same standards. OAuth2 with scopes is the mechanism used by many big authentication providers, like Facebook, Google, GitHub, Microsoft, Twitter, etc. to authorize third party applications to interact with their APIs on behalf of their users.
+You can learn more in the **Advanced User Guide** about how to use OAuth2 "scopes", for a more fine-grained permission system, following these same standards. OAuth2 with scopes is the mechanism used by many big authentication providers, like Facebook, Google, GitHub, Microsoft, X (Twitter), etc. to authorize third party applications to interact with their APIs on behalf of their users.
